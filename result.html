@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    
+    <title>Prediction Result</title>
+   
+</head>
+    
+<body bgcolor="wheat">
+    <marquee><H1 style="color:green;">DIET'S BMI PREDICTION REPORT</H1></marquee>
+    <br>
+    <h2 style="color:blue;"><u> PREDICTION RESULTS: </u></h2>
+    {% if bmi != 0 %}
+        <p><b>Height: {{ height }} m</b></p>
+        <p><b>Weight: {{ weight }} Kg</b></p>
+        <p><b>BMI: {{ bmi }} Kg/m2</b></p>
+    {% endif %}
+    
+    {% if bmi == 0 %}
+    <h2 style = "color:red;"> Please Select Proper Face Image </h2>
+    {% endif %}
+    
+    
+    {% if bmi >= 18.5 and bmi < 24.9 %}
+        <p>Your BMI is {{ bmi }}. You are at NORMAL WEIGHT.</p>
+        <p>Preferred Exercises: Brisk Walking, Jogging, Cycling or Swimming</p>
+    {% endif %}
+    
+    {% if bmi >= 24.9 and bmi <= 29.9 %}
+        <p>Your BMI is {{ bmi }}. You are at OVER WEIGHT.</p>
+        <p>Preferred Exercises: Box,Jumps,Battle Ropes, Circuit Training</p>
+    {% endif %}
+    
+    {% if bmi >= 30.0 %}
+        <p>Your BMI is {{ bmi }}. You are OBESE.</p>
+        <p>Preferred Exercises: Walking,Cycling or Swimming</p>
+    {% endif %}
+   
+    {% if bmi < 18.5 and bmi != 0 %}
+        <p>Your BMI is {{ bmi }}. You are at UNDER WEIGHT.</p>
+        <p>Preferred Exercises: Resistance training, Weightlifting, Bodyweight Exercises</p>
+    {% endif %}
+    
+    <h2 style="color:blue;"><u> SELECTED IMAGE: </u> </h2>
+    <br>
+    
+    <img src="{{ url_for('static', filename=filename) }}" alt="Uploaded Image">
+    
+</body>
+
+</html>
+
